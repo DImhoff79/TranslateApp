@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var router = express.Router();
 var jsonParser = bodyParser.json();
 var unenParser = bodyParser.urlencoded();
+var AWS = require('aws-sdk');
 var translate = new AWS.Translate();
 
 
@@ -30,24 +31,10 @@ router.post('/sendit',jsonParser,function(req,res){
   });
 
 // Instantiates a client
-const translate = new Translate({
-  projectId: projectId,
-});
+
 
 //calls the translate.translate function and returns the results array
-translate
-  .translate(text, target)
-  .then(results => {
- const translation = results[0];
- 
- //send the results of the translation along with the initial message back to the index page
- res.render('index', {result: results[0], keep:req.body.text});
- //console.log(translation);
-  })
-  .catch(err => {
-    console.error('ERROR:', err);
-  });
 
-})
+});
 
 module.exports = router;
