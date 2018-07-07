@@ -4,7 +4,7 @@ var router = express.Router();
 var jsonParser = bodyParser.json();
 var AWS = require('aws-sdk');
 var translate = new AWS.Translate();
-AWS.config.update({region:'us-east-1'});
+AWS.config.region ='us-east-1';
 
 
 /* GET home page. */
